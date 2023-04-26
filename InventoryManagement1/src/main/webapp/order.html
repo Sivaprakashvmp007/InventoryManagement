@@ -130,9 +130,24 @@ footer {
   
   <article>
    
-   <p>Inventory Management</p>
-   <p>This application provides easy inventory management </p>
-    <p>Provided with easy accessibility features</p>
+    <form action="placeOrder">
+	
+	<label>OrderId</label><input type="text" name="orderId"><br><br>
+	<label>CustomerId</label><input type="text" name="cID">
+	<label>Customer Name</label><input type="text" name="cName"><br><br>
+	<label>Item Id</label><input type="text" name="itemId">
+	<label>Item Name</label><input type="text" name="itemName"><br><br>
+	
+
+	<input type="submit" value="placeOrder" name="placeOrder">
+	<input type="reset" value="cancel">
+	
+	</form>
+	<br>
+	<br>
+	<form action="viewAllOrders">
+	<input type="submit" value="view all orders">
+	</form>
   </article>
 </section>
 

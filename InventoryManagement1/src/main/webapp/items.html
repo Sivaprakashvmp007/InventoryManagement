@@ -5,7 +5,137 @@
 <title>Items</title>
 </head>
 <body>
-<h2>Items Information</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Inventory Management</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family:'Times New Roman', Times, serif;
+}
+
+/* Style the header */
+header {
+  background-color: #034f84;
+
+
+  padding: 28px;
+  text-align: center;
+  font-size: 35px;
+  color: rgb(253, 253, 253);
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  height: 400px; /* only for demonstration, should be removed */
+  background-color:#92a8d1;
+  
+  padding: 1px;
+  text-decoration: none;
+  
+}
+
+/* Style the list inside the menu */
+nav ul li a{
+  list-style-type: none;
+  padding: 0;
+  text-decoration: none;
+  padding:10px;
+  color:black;
+  padding-bottom:20px;
+  margin-bottom: 10px;
+  color:white;
+}
+li{
+  padding: 20px;
+  color: white;
+  font-size: 20px;
+  
+  text-decoration: none;
+}
+#storageBtn{
+  list-style-type: none;
+  padding: 0;
+  text-decoration: none;
+  
+  color:black;
+
+  text-decoration: none;
+  color:white;
+  border-color:#92a8d1;
+  background-color:#92a8d1;
+  box-shadow: none;
+ 
+  color: white;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  color:#000000;
+  background-color: #dfe0e2;
+  height: 400px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+ 
+  padding: 10px;
+  text-align: center;
+  color: white;
+  background-color: #034f84;
+  
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <h2>Inventory Management</h2>
+</header>
+
+<section>
+  <nav>
+    <ul>
+      <li><a href="customer1.html">Customer</a></li>
+      <li><a href="items.html">Items</a></li>
+      <form action="viewAllItems">
+    	<li><input type="submit" value="Storage" id="storageBtn">
+    	</form></li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="bill.html">Bill</a></li>
+    </ul>
+  </nav>
+  
+  <article>
+    <h2>Items Information</h2>
     <form action="addItems">
     <div class="items">
     <p>
@@ -18,5 +148,24 @@
     </p>
     </div>
     </form>
+    <br><br>
+    <form action="viewAllItems">
+    <input type="submit" value="View All Items">
+    </form>
+    <br><br>
+    <form action="deleteItem">
+    Delete<input type="text" name="itemId"><input type="submit" value="deleteItem">
+    </form>
+
+  
+  </article>
+</section>
+
+<footer>
+  <p>copy rights @abcInc.</p>
+</footer>
+
 </body>
 </html>
+
+

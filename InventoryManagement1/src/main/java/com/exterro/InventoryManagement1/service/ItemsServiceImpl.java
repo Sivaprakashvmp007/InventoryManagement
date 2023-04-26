@@ -20,12 +20,18 @@ public class ItemsServiceImpl implements ItemsService{
 
 	@Override
 	public List<ItemsEn> viewAllItems() {
-	
+		 
+		return itemsDao.findAll();
 	}
 
 	@Override
 	public String deleteItem(String itemId) {
-		// TODO Auto-generated method stub
-		return null;
+		ItemsEn items1 = itemsDao.findById(itemId).orElse(null);
+		if (items1 != null) {
+			itemsDao.delete(items1);
+
+			return "item deleted successfully";
+		}
+		return "item unavailble";
 	}
 }

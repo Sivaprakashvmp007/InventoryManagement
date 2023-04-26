@@ -5,26 +5,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.exterro.InventoryManagement1.entity.ItemsEn;
-import com.exterro.InventoryManagement1.service.ItemsService;
+import com.exterro.InventoryManagement1.entity.OrdersEn;
+import com.exterro.InventoryManagement1.service.OrdersService;
 
 @Controller
-public class ItemsControl {
+public class OrdersControl {
 	@Autowired
-	private ItemsService itemsService;
-		
-	@RequestMapping("addItems")
-	public String addItems(ItemsEn items) {
-		ItemsEn items1 = itemsService.addItems(items);
-		return (items1 != null) ? "success.html" : "failure.html";
+	private OrdersService ordersService;
 
+	@RequestMapping("placeOrder")
+	public String placeOrder(OrdersEn orders) {
+		OrdersEn orders1 = ordersService.placeOrder(orders);
+		return (orders1 != null) ? "success.html" : "failure.html";
 	}
-	@RequestMapping("viewAllItems")
+
+	@RequestMapping("viewAllOrders")
 	@ResponseBody
 	
-	public String viewAllItems() {
-		
-		String result = "<!DOCTYPE html>\r\n"
+	public String viewAllOrders() {
+		//return customerService.viewAllCustomer();
+		String result="<!DOCTYPE html>\r\n"
 				+ "<html lang=\"en\">\r\n"
 				+ "<head>\r\n"
 				+ "<title>Inventory Management</title>\r\n"
@@ -152,27 +152,19 @@ public class ItemsControl {
 				+ "    </ul>\r\n"
 				+ "  </nav>\r\n"
 				+ "  \r\n"
-				+ "  <article><h3>Items List</h3><table><tr><th>ID</th><th>Item Name</th><th>Price</th><th>Quantity</th></tr>";
-		for(ItemsEn itemsEn: itemsService.viewAllItems()) {
-			result += "<tr><td>"+itemsEn.getItemId()+"</td><td>"+itemsEn.getItemName()+"</td><td>"+itemsEn.getItemPrice()+"</td><td>"+itemsEn.getItemQuantity()+"</td></tr>";
+				+ "  <article><table><tr><th>OrderId</th><th>Customer Id</th><th>Customer Name</th><th>Item Id</th><th>Item Name</th></tr>";
+					for(OrdersEn orders: ordersService.viewAllOrders()) {
+					result += "<tr><td>"+orders.getOrderId()+"</td><td>"+orders.getcID()+"</td><td>"+orders.getcName()+"</td><td>"+orders.getItemId()+"</td><td>"+orders.getItemName()+"</td></tr>";
+					}
+				result +="</table><a href=\"order.html\">Back</a></article>\r\n"
+						+ "</section>\r\n"
+						+ "\r\n"
+						+ "<footer>\r\n"
+						+ "  <p>copy rights @abcInc.</p>\r\n"
+						+ "</footer>\r\n"
+						+ "\r\n"
+						+ "</body>\r\n"
+						+ "</html>";
+				return result;
 			}
-		result += "</table><a href=\"customer1.html\">Back</a></article>\r\n"
-				
-				+ "</section>\r\n"
-				+ "\r\n"
-				+ "<footer>\r\n"
-				+ "  <p>copy rights @abcInc.</p>\r\n"
-				+ "</footer>\r\n"
-				+ "\r\n"
-				+ "</body>\r\n"
-				+ "</html>";
-		return result;
-	}
-	
-	
-	@RequestMapping("deleteItem")
-	@ResponseBody
-	public String deleteItem(String itemId) {
-		return itemsService.deleteItem(itemId);
-	}
 }
